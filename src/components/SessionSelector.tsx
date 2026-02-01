@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Plus, Calendar, Trash2 } from 'lucide-react';
 import { Session } from '../types';
 import { createSession } from '../storage';
+import { getESTDateString } from '../utils';
 
 interface SessionSelectorProps {
   sessions: Session[];
@@ -19,15 +20,6 @@ export const SessionSelector: React.FC<SessionSelectorProps> = ({
   onDeleteSession,
 }) => {
   const [showNewSession, setShowNewSession] = useState(false);
-
-  const getESTDateString = () => {
-    const now = new Date();
-    const estDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-    const month = String(estDate.getMonth() + 1).padStart(2, '0');
-    const day = String(estDate.getDate()).padStart(2, '0');
-    const year = estDate.getFullYear();
-    return `${month}.${day}.${year}`;
-  };
 
   const handleCreateSession = () => {
     const dateString = getESTDateString();

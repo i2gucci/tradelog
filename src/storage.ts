@@ -11,16 +11,19 @@ export const loadState = (): AppState => {
       // Migrate old data: convert feedbackAnalysis from string to array and add new fields
       state.sessions = state.sessions.map(session => ({
         ...session,
-        trades: session.trades.map(trade => ({
-          ...trade,
-          feedbackAnalysis: Array.isArray(trade.feedbackAnalysis)
-            ? trade.feedbackAnalysis
-            : trade.feedbackAnalysis
-              ? [trade.feedbackAnalysis]
-              : [],
-          lessonsLearned: (trade as any).lessonsLearned || [],
-          emotionalState: (trade as any).emotionalState || '',
-        })),
+        trades: session.trades.map(trade => {
+          const legacyTrade = trade as any;
+          return {
+            ...trade,
+            feedbackAnalysis: Array.isArray(trade.feedbackAnalysis)
+              ? trade.feedbackAnalysis
+              : trade.feedbackAnalysis
+                ? [trade.feedbackAnalysis as string]
+                : [],
+            lessonsLearned: Array.isArray(legacyTrade.lessonsLearned) ? legacyTrade.lessonsLearned : [],
+            emotionalState: typeof legacyTrade.emotionalState === 'string' ? legacyTrade.emotionalState : '',
+          };
+        }),
       }));
       
       return state;

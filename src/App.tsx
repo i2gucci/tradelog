@@ -7,6 +7,7 @@ import { TradeReport } from './components/TradeReport';
 import { QuickAddModal } from './components/QuickAddModal';
 import { Trade, Session } from './types';
 import { loadState, saveState, createSession } from './storage';
+import { getESTDateString } from './utils';
 import './App.css';
 
 function App() {
@@ -153,13 +154,7 @@ function App() {
   };
 
   const handleCreateNewSession = () => {
-    const now = new Date();
-    const estDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-    const month = String(estDate.getMonth() + 1).padStart(2, '0');
-    const day = String(estDate.getDate()).padStart(2, '0');
-    const year = estDate.getFullYear();
-    const dateString = `${month}.${day}.${year}`;
-    
+    const dateString = getESTDateString();
     const session = createSession(dateString, dateString);
     handleCreateSession(session);
   };
