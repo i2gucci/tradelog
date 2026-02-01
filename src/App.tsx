@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Plus, Download, Upload } from 'lucide-react';
+import { Plus, Download, Upload, BookOpen, Github, ExternalLink, Info } from 'lucide-react';
 import { SessionSelector } from './components/SessionSelector';
 import { TradeForm } from './components/TradeForm';
 import { TradeList } from './components/TradeList';
 import { TradeReport } from './components/TradeReport';
 import { QuickAddModal } from './components/QuickAddModal';
+import { Documentation } from './components/Documentation';
 import { Trade, Session } from './types';
 import { loadState, saveState, createSession } from './storage';
 import { getESTDateString } from './utils';
@@ -14,6 +15,7 @@ function App() {
   const [state, setState] = useState(loadState());
   const [selectedTrade, setSelectedTrade] = useState<Trade | null>(null);
   const [isQuickAddOpen, setIsQuickAddOpen] = useState(false);
+  const [view, setView] = useState<'trading' | 'docs'>('trading');
 
   useEffect(() => {
     saveState(state);
@@ -161,11 +163,24 @@ function App() {
 
   return (
     <div className="app">
-      <aside className="sidebar">
-        <div className="app-header">
-          <h1>Trade Tracker</h1>
-          <p className="app-subtitle">Document & Reflect</p>
-          <div className="import-export-controls">
+      {view === 'docs' ? (
+        <Documentation onBack={() => setView('trading')} />
+      ) : (
+        <>
+          <aside className="sidebar">
+            <div className="app-header">
+              <h1>Trade Tracker</h1>
+              <p className="app-subtitle">Document & Reflect</p>
+              <button
+                type="button"
+                className="btn-docs"
+                onClick={() => setView('docs')}
+                title="View Documentation"
+              >
+                <BookOpen size={18} />
+                <span>Documentation</span>
+              </button>
+              <div className="import-export-controls">
             <button 
               type="button"
               className="btn-icon-with-text" 
@@ -251,12 +266,44 @@ function App() {
         </button>
       )}
 
-      {/* Quick Add Modal */}
-      <QuickAddModal 
-        isOpen={isQuickAddOpen}
-        onClose={() => setIsQuickAddOpen(false)}
-        onAddTrade={handleQuickAddTrade}
-      />
+          {/* Quick Add Modal */}
+          <QuickAddModal 
+            isOpen={isQuickAddOpen}
+            onClose={() => setIsQuickAddOpen(false)}
+            onAddTrade={handleQuickAddTrade}
+          />
+        </>
+      )}
+
+      {/* Footer Bar */}
+      <footer className="footer-bar">
+        <div className="footer-left">
+          <button 
+            type="button" 
+            className="footer-link"
+            onClick={() => setView('docs')}
+          >
+            <BookOpen size={16} />
+            <span>Documentation</span>
+          </button>
+          <a 
+            href="https://github.com/i2gucci/tradelog" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="footer-link"
+          >
+            <Github size={16} />
+            <span>GitHub</span>
+            <ExternalLink size={12} />
+          </a>
+        </div>
+        <div className="footer-right">
+          <div className="footer-info">
+            <Info size={14} />
+            <span>TradeLog v1.0.0</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
