@@ -29,7 +29,7 @@ jobs:
         run: npm run build
         env:
           # Change to VITE_BASE_PATH=/ when using custom domain
-          VITE_BASE_PATH: /trade-tracker/
+          VITE_BASE_PATH: /upchain/
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

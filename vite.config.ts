@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 // For custom domain, set VITE_BASE_PATH=/ in build command
 export default defineConfig(({ command, mode }) => ({
   plugins: [react()],
-  base: process.env.VITE_BASE_PATH || '/trade-tracker/',
+  base: process.env.VITE_BASE_PATH || '/upchain/',
 }))
