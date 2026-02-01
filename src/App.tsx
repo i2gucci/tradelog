@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Plus, Download, Upload, BookOpen, Github, ExternalLink, Info } from 'lucide-react';
+import { Plus, Download, Upload, Github, ExternalLink, Info, BookOpen } from 'lucide-react';
 import { SessionSelector } from './components/SessionSelector';
 import { TradeForm } from './components/TradeForm';
 import { TradeList } from './components/TradeList';
@@ -169,17 +169,8 @@ function App() {
         <>
           <aside className="sidebar">
             <div className="app-header">
-              <h1>Trade Tracker</h1>
-              <p className="app-subtitle">Document & Reflect</p>
-              <button
-                type="button"
-                className="btn-docs"
-                onClick={() => setView('docs')}
-                title="View Documentation"
-              >
-                <BookOpen size={18} />
-                <span>Documentation</span>
-              </button>
+              <h1>Tradelog</h1>
+              <p className="app-subtitle">Accountable trade journal</p>
               <div className="import-export-controls">
             <button 
               type="button"

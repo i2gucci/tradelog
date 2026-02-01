@@ -31,8 +31,7 @@
   --radius: 8px;
   --radius-lg: 12px;
   
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * {
@@ -44,7 +43,9 @@
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .app {
@@ -69,14 +70,17 @@ body {
 }
 
 .app-header h1 {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
   margin-bottom: 4px;
 }
 
 .app-subtitle {
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
 }
 
 .import-export-controls {
@@ -138,11 +142,11 @@ body {
 }
 
 .session-header h2 {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.2px;
 }
 
 .session-list {
@@ -178,8 +182,9 @@ body {
 }
 
 .session-item h3 {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
   margin-bottom: 6px;
 }
 
@@ -236,14 +241,17 @@ body {
 }
 
 .content-header h2 {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
   margin-bottom: 4px;
 }
 
 .session-date {
   color: var(--text-secondary);
   font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
 }
 
 /* Buttons */
@@ -261,7 +269,8 @@ button {
   color: white;
   border-radius: var(--radius);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 15px;
+  letter-spacing: 0.2px;
 }
 
 .btn-primary:hover {
@@ -441,9 +450,11 @@ textarea {
 .form-group label {
   display: block;
   margin-bottom: 6px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 .form-grid {
@@ -712,7 +723,8 @@ textarea {
 
 .trade-ticker h3 {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   margin-bottom: 4px;
 }
 
@@ -766,16 +778,17 @@ textarea {
 }
 
 .metric-label {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.2px;
   font-weight: 600;
 }
 
 .metric-value {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
 .metric-value.positive {
@@ -945,12 +958,12 @@ textarea {
 }
 
 .reflection-category h4 {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 1.5px;
   margin-bottom: 14px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .reflection-category textarea {
@@ -1580,11 +1593,15 @@ textarea {
 .empty-state-large h2,
 .empty-state-large h3 {
   color: var(--text-secondary);
+  font-size: 34px;
   font-weight: 600;
+  letter-spacing: -0.7px;
 }
 
 .empty-state-large p {
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
 }
 
 .btn-large {
@@ -1881,29 +1898,6 @@ textarea {
 }
 
 /* Documentation Styles */
-.btn-docs {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 12px;
-}
-
-.btn-docs:hover {
-  background: var(--bg-hover);
-  border-color: var(--border-light);
-  transform: translateY(-1px);
-}
-
 .documentation {
   width: 100%;
   height: 100vh;
@@ -1919,8 +1913,9 @@ textarea {
 }
 
 .docs-header h1 {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
   margin-top: 8px;
 }
 
@@ -1959,10 +1954,10 @@ textarea {
 }
 
 .docs-sidebar h3 {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 1.5px;
   color: var(--text-tertiary);
   margin-bottom: 16px;
 }
@@ -2010,29 +2005,32 @@ textarea {
 }
 
 .docs-article-content h1 {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: 600;
   margin-bottom: 24px;
   color: var(--text-primary);
   line-height: 1.2;
+  letter-spacing: -0.8px;
 }
 
 .docs-article-content h2 {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
   margin-top: 40px;
   margin-bottom: 16px;
   color: var(--text-primary);
   line-height: 1.3;
+  letter-spacing: -0.5px;
 }
 
 .docs-article-content h3 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 500;
   margin-top: 32px;
   margin-bottom: 12px;
   color: var(--text-primary);
   line-height: 1.4;
+  letter-spacing: -0.2px;
 }
 
 .docs-article-content h4 {
@@ -2118,6 +2116,7 @@ textarea {
   border-radius: var(--radius);
   font-size: 13px;
   font-weight: 500;
+  letter-spacing: 0.2px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
